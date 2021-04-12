@@ -26,3 +26,23 @@ Route::post('/store', function () {
     $name = request('name');
     return view('about', compact('name'));
 });
+
+Route::get('task', function () {
+
+    $tasks = [
+        'first-task'=>'task 1',
+        'seconde-task'=>'task 2',
+        'third-task'=>'task 3'
+    ];
+    return view('task', compact('tasks'));
+});
+
+Route::get('show/{id}', function ($id) {
+    $tasks = [
+        'first-task'=>'task 1',
+        'seconde-task'=>'task 2',
+        'third-task'=>'task 3'
+    ];
+    $task = $tasks[$id];
+    return view('show',compact('task'));
+});
