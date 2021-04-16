@@ -8,9 +8,19 @@
 </head>
 <body>
     <ul>
+        @foreach ($tasks as $task)
+            <li><a href="tasks/show/{{$task->id}}"> {{$task->title}}</a></li>
+        @endforeach
+
+
+
+
+
+{{--
         <?php foreach ($tasks as $key => $task): ?>
         <li><a href={{'show/' . $key}}> <?php echo $task ?> </a></li>
         <?php endforeach; ?>
+         --}}
     </ul>
 </body>
 </html>

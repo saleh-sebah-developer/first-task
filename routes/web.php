@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('tasks',function(){
+
+    $tasks = DB::table('tasks')->get();
+   // dd($tasks);
+    return view('task',compact('tasks'));
+});
+
+Route::get('tasks/show/{id}', function($id){
+
+    $task = DB::table('tasks')->where('id', $id)->first();
+    // $task = DB::table('tasks')->find($id);
+   // dd($task);
+
+    return view('show',compact('task'));
+});
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 Route::get('/about', function () {
     $name = request('name');
     return view('about', compact('name'));
@@ -27,13 +56,17 @@ Route::post('/store', function () {
     return view('about', compact('name'));
 });
 
-Route::get('task', function () {
-
+Route::get('/task', function () {
     $tasks = [
         'first-task'=>'task 1',
         'seconde-task'=>'task 2',
         'third-task'=>'task 3'
     ];
+    // $tasks = [
+    //     'task 1',
+    //     'task 2',
+    //     'task 3'
+    // ];
     return view('task', compact('tasks'));
 });
 
@@ -46,3 +79,4 @@ Route::get('show/{id}', function ($id) {
     $task = $tasks[$id];
     return view('show',compact('task'));
 });
+*/
