@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+ @extends('layout')
+ @section('content')
+    <h1>{{$task->title}}</h1>
+ @endsection
+
+
+
+{{-- befor vido blade  --}}
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +19,8 @@
 
     <h1>{{$task->title}}</h1>
 
-{{-- <h1> {{dd($task)}}</h1> --}}
-
-    {{-- <h1><?php echo $task ?></h1> --}}
+    {{-- <h1> {{dd($task)}}</h1> --}}
+    {{-- <h1><?php echo $task; ?></h1>
 
 </body>
-</html>
+</html>  --}}
