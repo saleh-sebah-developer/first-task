@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -19,19 +20,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('app', function () {
-    $tasks =DB::table('tasks')
-    ->orderBy('title', 'asc')->get();
+Route::get('todo', function () {
+    // $tasks =DB::table('tasks')->orderBy('title', 'asc')->get();
+    $tasks = Task::all();
+    // dd($tasks);
     return view('todo', compact('tasks'));
 });
 
 Route::post('store', function (Request $request) {
-    DB::table('tasks')->insert([
-        'title' => $request->title
-    ]);
+    // DB::table('tasks')->insert([
+    //     'title' => $request->title
+    // ]);
+    //title name in db   ,,,,   $request->title name in html reqest
+
+    $task = new Task();
+    $task->title = $request->title;
+    $task->save();
     return redirect()->back();
 });
-    //title name in db   ,,,,   $request->title name in html reqest
+
+
+Route::get('todo/{id}', function ($id) {
+
+    $task = Task::find($id);
+    $task->delete();
+    return redirect()->back();
+});
+
+
+
+
 
 
 
